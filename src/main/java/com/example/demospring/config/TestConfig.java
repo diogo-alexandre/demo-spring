@@ -13,12 +13,15 @@ import java.util.List;
 @Configuration
 @Profile(value = "test")
 public class TestConfig implements CommandLineRunner {
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public TestConfig(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         List<User> users = new ArrayList<>();
 
         users.add(new User(null, "Diogo", "diogo@mail.com", "+5500999999999", "12345"));
