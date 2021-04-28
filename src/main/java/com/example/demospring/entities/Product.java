@@ -20,11 +20,12 @@ public class Product implements Serializable {
 
     public Product() { }
 
-    public Product(Long id, String name, String description, Float price) {
+    public Product(Long id, String name, String description, Float price, String imageUrl) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.imageUrl = imageUrl;
     }
 
     public Long getId() {

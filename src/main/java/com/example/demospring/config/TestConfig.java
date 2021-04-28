@@ -45,9 +45,9 @@ public class TestConfig implements CommandLineRunner {
         Category c2 = new Category(null, "Books");
         Category c3 = new Category(null, "Computers");
 
-        Product p1 = new Product(null, "Lord of the rings", "description", 90.5f);
-        Product p2 = new Product(null, "SmartTv", "description", 1005.0f);
-        Product p3 = new Product(null, "MacBook", "description", 3540.99f);
+        Product p1 = new Product(null, "Lord of the rings", "description", 90.5f, "");
+        Product p2 = new Product(null, "SmartTv", "description", 1005.0f, "");
+        Product p3 = new Product(null, "MacBook", "description", 3540.99f, "");
 
         User u1 = new User(null, "Diogo", "diogo@mail.com", "+5500999999999", "12345");
         User u2 = new User(null, "John", "john@mail.com", "+5500999999999", "12345");
