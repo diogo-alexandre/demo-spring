@@ -1,11 +1,10 @@
 package com.example.demospring.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Product implements Serializable {
@@ -17,6 +16,14 @@ public class Product implements Serializable {
     private String description;
     private Float price;
     private String imageUrl;
+
+    @ManyToMany
+    @JoinTable (
+            name = "product_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories = new HashSet<>();
 
     public Product() { }
 
@@ -66,6 +73,10 @@ public class Product implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Set<Category> getCategories() {
+        return this.categories;
     }
 
     @Override

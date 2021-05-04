@@ -49,6 +49,15 @@ public class TestConfig implements CommandLineRunner {
         Product p2 = new Product(null, "SmartTv", "description", 1005.0f, "");
         Product p3 = new Product(null, "MacBook", "description", 3540.99f, "");
 
+        this.categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
+        this.productRepository.saveAll(Arrays.asList(p1, p2, p3));
+
+        p1.getCategories().add(c2);
+        p2.getCategories().add(c1);
+        p3.getCategories().addAll(Arrays.asList(c1, c3));
+
+        this.productRepository.saveAll(Arrays.asList(p1, p2, p3));
+
         User u1 = new User(null, "Diogo", "diogo@mail.com", "+5500999999999", "12345");
         User u2 = new User(null, "John", "john@mail.com", "+5500999999999", "12345");
 
@@ -56,8 +65,6 @@ public class TestConfig implements CommandLineRunner {
         Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:01Z"), OrderStatus.CANCELED, u2);
         Order o3 = new Order(null, Instant.parse("2019-07-21T15:21:22Z"), OrderStatus.WAITING_PAYMENT, u1);
 
-        this.categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
-        this.productRepository.saveAll(Arrays.asList(p1, p2, p3));
         this.userRepository.saveAll(Arrays.asList(u1, u2));
         this.orderRepository.saveAll(Arrays.asList(o1, o2, o3));
     }
